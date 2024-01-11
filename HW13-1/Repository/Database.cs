@@ -4,5 +4,6 @@ namespace HW13_1.Repository;
 
 public static class Database
 {
-   public static List<Person> people=new List<Person>();
+   public static List<Student> students=new List<Student>();
+   public static List<Teacher> teachers = new List<Teacher>();
 }

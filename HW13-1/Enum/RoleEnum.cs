@@ -1,8 +1,7 @@
-﻿namespace HW13_1.Enum
+﻿namespace HW13_1.Enum;
+
+public enum RoleEnum
 {
-    public enum RoleEnum
-    {
-        Professor=0,
-        Student
-    }
+    Teacher=0,
+    Student
 }

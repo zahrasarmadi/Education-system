@@ -8,29 +8,55 @@ namespace HW13_1.Repository;
 
 public class Authentication : IAuthentication
 {
-    Serialization serialization = new Serialization("person.json");
-    public Person Login(string email, string password)
+    Serialization serializationST = new Serialization("student.json");
+    Serialization serializationTR = new Serialization("teacher.json");
+    public Person Login(LoginDTO loginDTO)
     {
-        Database.people = serialization.ReadFromFile<Person>();
-
-        var loginPerson = Database.people.FirstOrDefault(p => p.Email == email && p.Password == password);
-        if (loginPerson != null)
+        Database.teachers = serializationTR.ReadFromFile<Teacher>();
+        Database.students = serializationST.ReadFromFile<Student>();
+        var loginTeacher = Database.teachers.FirstOrDefault(p => p.Email == loginDTO.Email && p.Password == loginDTO.Password);
+        var loginStudebt = Database.students.FirstOrDefault(p => p.Email == loginDTO.Email && p.Password == loginDTO.Password);
+        if (loginStudebt != null && loginTeacher == null)
         {
-            if (loginPerson.Role == Enum.RoleEnum.Student)
-            {
-                return (Student)loginPerson;
-            }
-            else if (loginPerson.Role == Enum.RoleEnum.Professor)
-            {
-                return (Teacher)loginPerson;
-            }
+            return loginStudebt;
+        }
+        else if (loginStudebt == null && loginTeacher != null)
+        {
+            return loginTeacher;
         }
         return null;
     }
 
-    public void Register(RegisterDTO person)
+    public void Register(Person person)
     {
-        Database.people.Add(person);
-        serialization.SaveToFileWhitWrite(Database.people);
+        person.Id = Guid.NewGuid().ToString();
+        if (person.Role == Enum.RoleEnum.Teacher)
+        {
+            var teacher=new Teacher()
+            {
+                Id = person.Id,
+                Email = person.Email,
+                Password = person.Password,
+                Role = person.Role,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+            };
+            Database.teachers.Add(teacher);
+            serializationTR.SaveToFileWhitWrite(Database.teachers);
+        }
+        else if (person.Role == Enum.RoleEnum.Student)
+        {
+            var student = new Student()
+            {
+                Id = person.Id,
+                Email = person.Email,
+                Password = person.Password,
+                Role = person.Role,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+            };
+            Database.students.Add(student);
+            serializationST.SaveToFileWhitWrite(Database.students);
+        }
     }
 }

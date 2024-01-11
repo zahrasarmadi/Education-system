@@ -4,6 +4,6 @@ namespace HW13_1.Repository.Interfaces;
 
 public interface IAuthentication
 {
-    public Person Login(string email, string password);
+    public Person Login(LoginDTO loginDTO);
     public void Register(Person person);
 }
