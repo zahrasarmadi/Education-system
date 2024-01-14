@@ -4,51 +4,65 @@ using HW13_1.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace HW13_1.Controllers
+namespace HW13_1.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    Authentication authentication = new Authentication();
+
+    public IActionResult Register()
     {
-        Authentication authentication = new Authentication();
+        return View();
+    }
 
-        public IActionResult Register()
+    [HttpPost]
+    public IActionResult Register(RegisterDTO model)
+    {
+        Person person = new Person()
         {
-            return View();
-        }
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            Email = model.Email,
+            Password = model.Password,
+            Role = model.Role,
+        };
+        authentication.Register(person);
+        return RedirectToAction("Login");
+    }
 
-        [HttpPost]
-        public IActionResult Register(RegisterDTO model)
-        {
-            Person person = new Person()
-            {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Email = model.Email,
-                Password = model.Password,
-                Role = model.Role,
-            };
-            authentication.Register(person);
-            return RedirectToAction("Login");
-        }
-
-        [HttpPost]
-        public IActionResult Login(LoginDTO model)
+    [HttpPost]
+    public IActionResult Login(LoginDTO model)
+    {
+        try
         {
             var loginUser = authentication.Login(model);
             if (loginUser.Role == Enum.RoleEnum.Student)
-            { 
+            {
+                Database.OnlineStudent = (Student)loginUser;
                 return RedirectToAction("Index", "Student");
+
             }
             else if (loginUser.Role == Enum.RoleEnum.Teacher)
             {
+                Database.OnlineTeacher = (Teacher)loginUser;
                 return RedirectToAction("Index", "Teacher");
             }
-            return View(loginUser);
         }
-
-        public IActionResult Login()
+        catch
         {
-            return View();
+            ModelState.AddModelError(string.Empty, "Invalid username or password.");
         }
+        return View("Login", model);
 
+    }
+
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    public IActionResult Index()
+    {
+        return View();
     }
 }

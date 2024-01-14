@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Panel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+        <div class="header-blue">
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Zahra Sarmadi</a>
+                    <div class="collapse navbar-collapse"
+                         id="navcol-1">
+
+                        <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group"><label for="search-field"></label><input class="form-control search-field" type="search" name="search" id="search-field"></div>
+                        </form><span class="navbar-text"> <a asp-action="Login" asp-controller="Home" class="login">Log In</a></span><a class="btn btn-light action-button" role="button" asp-action="Register" asp-controller="Home">Sign Up</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-xl-5 offset-xl-1">
+                        <h1>Coding is easy here...</h1>
+                        <p>
+                            Zahra's online programming training
+                        </p>
+                        <a asp-action="Register" asp-controller="Home" class="btn btn-light btn-lg action-button">Sign Up</a>
+                    </div>
+                    <div class="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">
+                        <div class="container">
+                            <main role="main" class="pb-3">
+                                @RenderBody()
+                            </main>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 1402 - Zahra Sarmadi
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

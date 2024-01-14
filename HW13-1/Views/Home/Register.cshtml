@@ -14,12 +14,13 @@
     <title>Register</title>
 </head>
 <body>
-    <section class="vh-100" style="background-color: #eee;">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+    <section class="vh-150" style="background:linear-gradient(135deg, #172a74, #21a9af);
+    background-color: #184e8e;">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
         <div class="col-lg-12 col-xl-11">
           <div class="card text-black" style="border-radius: 25px;">
-            <div class="card-body p-md-5">
+            <div class="card-body p-2">
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
@@ -59,15 +60,15 @@
                     <div class=" flex-row align-items-center mb-4">
                       <div class="mb-3 form-check ">
                         <label>Teacher or Student</label>
-                        <div class="form-check">
+                        <div class="form-check ">
                         <input class="form-check-input" type="radio" asp-for="Role" name="Role" value="Teacher" id="Teacher">
-                        <label class="form-check-label" asp-for="Role">
+                        <label class="form-check-label " asp-for="Role">
                         Teacher
                         </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check ">
                         <input asp-for="Role" class="form-check-input" type="radio" name="Role" value="Student" id="Student" checked>
-                        <label class="form-check-label" asp-for="Role">
+                        <label class="form-check-label " asp-for="Role">
                         Student
                         </label>
                         </div>
