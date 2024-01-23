@@ -1,9 +1,10 @@
 ﻿using HW13_1.Enum;
+using HW13_1.Repository;
 
 namespace HW13_1.Entities;
 public class Person
 {
-    public string Id { get; set; }
+    public int Id { get; set; } = Database.PersonCounter++;
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }

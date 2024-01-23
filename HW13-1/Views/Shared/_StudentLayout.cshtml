@@ -15,9 +15,9 @@
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div class="container">
                 @* <a class="navbar-brand" href="#">Zahra Sarmadi</a> *@
-                <a class="btn text-light" asp-action="Index" asp-controller="Home">Add Cours</a>
-                <a class="btn text-light " asp-action="Index" asp-controller="Home">My Cours</a>
-                <a class="btn text-light" asp-action="Index" asp-controller="Home">Exit</a>
+                <a class="btn text-light" asp-action="GetCourses" asp-controller="Student">Add Course</a>
+                <a class="btn text-light " asp-action="GetCourses" asp-controller="Home">My Courses</a>
+                <a class="btn text-light" asp-action="Exit" asp-controller="Home">Exit</a>
 
                     <form class="form-inline mr-auto" target="_self">
                         <div class="form-group">
@@ -31,7 +31,7 @@
         <div class="container hero">
             <div class="row">
 
-                <div class="container">
+                <div class="container m-3">
                     <main role="main" class="pb-3">
                         @RenderBody()
                     </main>

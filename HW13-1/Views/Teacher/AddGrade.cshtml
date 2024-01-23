@@ -1,0 +1,27 @@
+﻿@model HW13_1.Entities.GradeDTO
+
+@{
+    ViewData["Title"] = "AddGrade";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<h1>Add Grade</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddGrade" method="post" asp-controller="Teacher">
+            <label asp-for="Grade">Enter Grade:</label>
+            <input asp-for="Grade" type="number" class="form-control"/>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

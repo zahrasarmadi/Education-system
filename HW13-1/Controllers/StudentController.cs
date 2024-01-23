@@ -5,9 +5,25 @@ namespace HW13_1.Controllers;
 
 public class StudentController : Controller
 {
+    StudentRepository studentRepository = new StudentRepository();
+    TeacherRipository teacherRipository= new TeacherRipository();
     [HttpGet]
     public IActionResult Index()
     {
         return View(Database.OnlineStudent);
+    }
+
+    public IActionResult AddCourse(int courseId)
+    {
+        studentRepository.AddCourse(courseId);
+        return RedirectToAction("GetMyCourses");
+    }
+    public IActionResult GetCourses()
+    {
+        return View(teacherRipository.GetTrainingCourses());
+    }
+   public IActionResult GetMyCourses()
+    {
+        return View(studentRepository.GetCouse());
     }
 }

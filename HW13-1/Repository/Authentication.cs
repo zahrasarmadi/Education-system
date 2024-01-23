@@ -12,7 +12,6 @@ public class Authentication : IAuthentication
     Serialization serializationTR = new Serialization("teacher.json");
     public Person Login(LoginDTO loginDTO)
     {
-
         Database.teachers = serializationTR.ReadFromFile<Teacher>();
         Database.students = serializationST.ReadFromFile<Student>();
         var loginTeacher = Database.teachers.FirstOrDefault(p => p.Email == loginDTO.Email && p.Password == loginDTO.Password);
@@ -31,18 +30,19 @@ public class Authentication : IAuthentication
 
     public void Register(Person person)
     {
-        person.Id = Guid.NewGuid().ToString();
+        Database.teachers = serializationTR.ReadFromFile<Teacher>();
+        Database.students = serializationST.ReadFromFile<Student>();
         if (person.Role == Enum.RoleEnum.Teacher)
         {
             var teacher = new Teacher()
             {
-                Id = person.Id,
                 Email = person.Email,
                 Password = person.Password,
                 Role = person.Role,
                 FirstName = person.FirstName,
                 LastName = person.LastName,
             };
+            
             Database.teachers.Add(teacher);
             serializationTR.SaveToFileWhitWrite(Database.teachers);
         }
@@ -50,7 +50,6 @@ public class Authentication : IAuthentication
         {
             var student = new Student()
             {
-                Id = person.Id,
                 Email = person.Email,
                 Password = person.Password,
                 Role = person.Role,

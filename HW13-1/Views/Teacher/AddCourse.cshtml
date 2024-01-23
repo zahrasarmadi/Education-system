@@ -1,0 +1,41 @@
+﻿@model HW13_1.Entities.TrainingCourse
+
+@{
+    ViewData["Title"] = "AddCourse";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<h1>AddCourse</h1>
+<br />
+<hr />
+<div class="row">
+    <div class="col-md-4 text-light">
+        <form asp-action="AddCourse" asp-controller="Teacher" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name " class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-dark" value="Create">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-secondary
+" asp-action="Index">Back to Home</a>
+</div>
+

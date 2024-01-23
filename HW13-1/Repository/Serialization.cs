@@ -19,7 +19,6 @@ public class Serialization
         File.WriteAllText(path, stringObg);
     }
 
-
     public List<T> ReadFromFile<T>()
     {
         if (File.Exists(path))

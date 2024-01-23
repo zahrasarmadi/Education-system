@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HW13_1.Entities.TrainingCourse>
+
+@{
+    ViewData["Title"] = "GetTrainingCourse";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<h1>TrainingCourse</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                Capacity
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Teacher Name
+            </th>
+            <th>
+                Students Count
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher.FirstName)  @Html.DisplayFor(modelItem => item.Teacher.LastName)
+                </td>
+                <td>
+                    <div class="link-body-emphasis">
+                        <a class="btn btn-dark" asp-action="GetStudentsOfCourse" asp-controller="Teacher" asp-route-id="@item.Id">
+                            Detail
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

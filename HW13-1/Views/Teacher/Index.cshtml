@@ -1,8 +1,10 @@
-﻿
+﻿@using HW13_1.Entities;
+@model Teacher;
 @{
     ViewData["Title"] = "Teacher";
     Layout = "~/Views/Shared/_TeacherLayout.cshtml";
-}
-
-<h1>teach</h1>
-
+} 
+<h1 class="text-light">Hello @Model.FirstName @Model.LastName</h1>
+<h2 class="text-light">
+    Let's go...
+</h2>

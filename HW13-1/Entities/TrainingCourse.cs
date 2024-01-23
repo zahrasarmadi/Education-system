@@ -1,10 +1,12 @@
-﻿namespace HW13_1.Entities;
+﻿using HW13_1.Repository;
+
+namespace HW13_1.Entities;
 public class TrainingCourse
 {
-    public int Id { get; set; }
+    public int Id { get; set; } = Database.TrainingCourseCounter++;
+    public string Name { get; set; }
     public DateTime StartTime { get; set; }
-    public int Capacity { get; set; }
-    public Course Course { get; set; }
     public Teacher Teacher { get; set; }
-    public List<Student> Students { get; set; } 
+    public int Capacity { get; set; }
+    public List<Student> Students { get; set; }
 }
