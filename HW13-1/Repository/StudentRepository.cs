@@ -39,6 +39,10 @@ public class StudentRepository
     {
         Database.students = serializationST.ReadFromFile<Student>();
         var studentCourse = Database.OnlineStudent.Courses;
+        if(studentCourse==null)
+        {
+            return new List<StudentCourse>();
+        }
         return studentCourse;
     }
 

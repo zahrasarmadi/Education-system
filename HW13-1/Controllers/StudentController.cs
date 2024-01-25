@@ -26,4 +26,10 @@ public class StudentController : Controller
     {
         return View(studentRepository.GetCouse());
     }
+    
+    public IActionResult Exit()
+    {
+        Database.OnlineStudent = null;
+        return RedirectToAction("Index", "Home");
+    }
 }

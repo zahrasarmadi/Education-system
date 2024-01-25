@@ -16,15 +16,15 @@
             <div class="container">
                 @* <a class="navbar-brand" href="#">Zahra Sarmadi</a> *@
                 <a class="btn text-light" asp-action="GetCourses" asp-controller="Student">Add Course</a>
-                <a class="btn text-light " asp-action="GetCourses" asp-controller="Home">My Courses</a>
-                <a class="btn text-light" asp-action="Exit" asp-controller="Home">Exit</a>
+                <a class="btn text-light " asp-action="GetMyCourses" asp-controller="Student">My Courses</a>
+                
 
                     <form class="form-inline mr-auto" target="_self">
                         <div class="form-group">
                            
                         </div>
                     </form>
-                    <a class="btn btn-light action-button" asp-action="Index" asp-controller="Home">Exit</a>
+                    <a class="btn btn-light action-button" asp-action="Exit" asp-controller="Student">Exit</a>
                 
             </div>
         </nav>

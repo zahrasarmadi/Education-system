@@ -15,7 +15,11 @@ public class Serialization
 
     public void SaveToFileWhitWrite<T>(List<T> obg)
     {
-        var stringObg = JsonConvert.SerializeObject(obg);
+        var stringObg = JsonConvert.SerializeObject(obg, Formatting.None,
+                        new JsonSerializerSettings()
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
         File.WriteAllText(path, stringObg);
     }
 

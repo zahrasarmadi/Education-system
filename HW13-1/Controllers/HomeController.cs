@@ -63,6 +63,6 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View(Database.OnlineTeacher);
+        return View();
     }
 }

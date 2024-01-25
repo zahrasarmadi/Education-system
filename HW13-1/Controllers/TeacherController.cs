@@ -37,14 +37,18 @@ public class TeacherController : Controller
     [HttpPost]
     public IActionResult AddGrade(GradeDTO gradeDTO)
     {
-       // gradeDTO.CourseID = (int)TempData["CourseID"];
         teacherRipository.AddGrade(gradeDTO);
         return View();
     }
 
     public IActionResult GetStudentsOfCourse(int id)
     {
-        //TempData["CourseID"] = id;
         return View(teacherRipository.GetStudents(id));
+    }
+
+    public IActionResult Exit()
+    {
+        Database.OnlineTeacher = null;
+        return RedirectToAction("Index", "Home");
     }
 }
