@@ -23,7 +23,12 @@
           <div class="card shadow-2-strong" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
                   
-               @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @if (ViewData["ShowAlert"] == "1")
+              {
+                <div class="alert alert-primary" role="alert">
+                  @ViewData["AlertMessage"].ToString();
+                </div>
+              }
               <form asp-action="Login" asp-controller="Home" method="post">
               <h3 class="mb-5">Sign in</h3>
   

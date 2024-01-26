@@ -6,7 +6,7 @@ public class TrainingCourse
     public int Id { get; set; } = Database.TrainingCourseCounter++;
     public string Name { get; set; }
     public DateTime StartTime { get; set; }
-    public Teacher Teacher { get; set; }
+    public Teacher Teacher { get; set; }= new Teacher();
     public int Capacity { get; set; }
-    public List<Student> Students { get; set; }
+    //public List<Student> Students { get; set; }=new List<Student>();
 }

@@ -10,6 +10,7 @@ public class StudentController : Controller
     [HttpGet]
     public IActionResult Index()
     {
+        ViewData["userName"] = Database.OnlineStudent.FirstName;
         return View(Database.OnlineStudent);
     }
 

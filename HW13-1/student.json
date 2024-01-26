@@ -1,1 +1,1 @@
-[{"Courses":null,"Id":1,"FirstName":"soosan","LastName":"sosi","Email":"soosan@gmail.com","Password":"456","Role":1},{"Courses":null,"Id":1013,"FirstName":"sisi","LastName":"sisiiiii","Email":"sisi@gmail.com","Password":"123","Role":1}]
+[{"Courses":[{"trainingCourse":{"Id":127,"Name":"C#","StartTime":"2024-01-18T22:39:00","Teacher":{"Id":5646,"FirstName":"zahra","LastName":"sarmadi","Email":"zahra@gmail.com","Password":"123","Role":0},"Capacity":5},"Grade":20}],"Id":1013,"FirstName":"sisi","LastName":"sisiiiii","Email":"sisi@gmail.com","Password":"123","Role":1}]

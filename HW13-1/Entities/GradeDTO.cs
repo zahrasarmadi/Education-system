@@ -2,7 +2,8 @@
 
 public class GradeDTO
 {
-    public int StudentID { get; set; }
-    public int? CourseID { get; set; }
+    public int StudentId { get; set; }
+    public string StudentName { get; set; }
+    public int? CourseId { get; set; }
     public int Grade { get; set; }
 }

@@ -24,15 +24,24 @@ public class TeacherRipository
     public void AddGrade(GradeDTO gradeDTO)
     {
         Database.students = serializationST.ReadFromFile<Student>();
-        Database.students.FirstOrDefault(s => s.Id == gradeDTO.StudentID).Courses.FirstOrDefault(c=>c.trainingCourse.Id == gradeDTO.CourseID).Grade=gradeDTO.Grade;
+        Database.students
+            .FirstOrDefault(s => s.Id == gradeDTO.StudentId).Courses
+            .FirstOrDefault(c => c.trainingCourse.Id == gradeDTO.CourseId).Grade = gradeDTO.Grade;
         serializationST.SaveToFileWhitWrite(Database.students);
+
     }
-    
+
     public List<Student> GetStudents(int courseId)
     {
-        Database.trainingCourses = serializationCS.ReadFromFile<TrainingCourse>();
-        var students=Database.trainingCourses.FirstOrDefault(c=>c.Id==courseId).Students;
-        return students;
+        Database.students = serializationST.ReadFromFile<Student>();
+
+        var target = Database.students.Where(s => s.Courses.Any(c => c.trainingCourse.Id == courseId)).ToList();
+
+        if (target == null)
+        {
+            return new List<Student>();
+        }
+        return target;
     }
     
     public List<TrainingCourse> GetTrainingCourses()

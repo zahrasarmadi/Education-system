@@ -1,20 +1,23 @@
 ﻿using HW13_1.Entities;
 using HW13_1.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace HW13_1.Controllers;
 
 public class TeacherController : Controller
 {
-    TeacherRipository teacherRipository=new TeacherRipository();
+    TeacherRipository teacherRipository = new TeacherRipository();
+    StudentRepository studentRepository = new StudentRepository();
     public IActionResult Index()
     {
+        ViewData["userName"] = Database.OnlineTeacher.FirstName;
         return View(Database.OnlineTeacher);
     }
 
     [HttpPost]
     public IActionResult AddCourse(TrainingCourseDTO model)
-    { 
+    {
         teacherRipository.AddTrainingCours(model);
         return RedirectToAction("GetTrainingCourse");
     }
@@ -29,8 +32,17 @@ public class TeacherController : Controller
         return View(teacherRipository.GetTrainingCourses());
     }
 
-    public IActionResult AddGrade()
+    public IActionResult AddGrade(int id, int courseId,string studentName)
     {
+        var gradeDTO = new GradeDTO()
+        {
+            StudentId = id,
+            StudentName = studentName,
+            CourseId = courseId
+        };
+        ViewData["StudentName"]=gradeDTO.StudentName;
+        ViewData["CourseId"]=gradeDTO.CourseId;
+        ViewData["StudentId"] = gradeDTO.StudentId;
         return View();
     }
 
@@ -38,12 +50,16 @@ public class TeacherController : Controller
     public IActionResult AddGrade(GradeDTO gradeDTO)
     {
         teacherRipository.AddGrade(gradeDTO);
-        return View();
+
+        return RedirectToAction("GetTrainingCourse");
     }
 
-    public IActionResult GetStudentsOfCourse(int id)
+    public IActionResult GetStudentsCourse(int id)
     {
-        return View(teacherRipository.GetStudents(id));
+        var result = teacherRipository.GetStudents(id);
+        ViewData["CourseId"] = id;
+        ViewBag.CourseId = id;
+        return View(result);
     }
 
     public IActionResult Exit()

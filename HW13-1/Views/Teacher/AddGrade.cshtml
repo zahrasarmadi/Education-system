@@ -7,13 +7,17 @@
 
 <h1>Add Grade</h1>
 
-<h4>Student</h4>
+<h4>Student :@ViewData["StudentName"]</h4>
 <hr />
 <div class="row">
+    
     <div class="col-md-4">
         <form asp-action="AddGrade" method="post" asp-controller="Teacher">
+            <input asp-for="StudentId" type="hidden" value="@ViewData["StudentId"]" />
+            <input asp-for="CourseId" type="hidden" value="@ViewData["CourseId"]" />
+            <input asp-for="StudentName" type="hidden" value="@ViewData["StudentName"]" />
             <label asp-for="Grade">Enter Grade:</label>
-            <input asp-for="Grade" type="number" class="form-control"/>
+            <input asp-for="Grade" type="number" class="form-control" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

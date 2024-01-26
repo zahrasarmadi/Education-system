@@ -1,5 +1,4 @@
 using HW13_1.Entities;
-using HW13_1.Models;
 using HW13_1.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -50,7 +49,8 @@ public class HomeController : Controller
         }
         catch
         {
-            ModelState.AddModelError(string.Empty, "Invalid username or password.");
+            ViewData["ShowAlert"] = "1";
+            ViewData["AlertMessage"] = "Invalid username or password.";
         }
         return View("Login", model);
 
